@@ -312,11 +312,13 @@
     <Content Include="Views\Price\Index.cshtml" />
     <Content Include="Views\Model\PriceChange.cshtml" />
     <Content Include="Views\Component\StatusChange.cshtml" />
+    <Content Include="Views\Component\Details.cshtml" />
+    <Content Include="Views\CurrentStatus\Index.cshtml" />
+    <Content Include="Views\CurrentStatus\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Infrastructure\Binders\" />
-    <Folder Include="Views\CurrentStatus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

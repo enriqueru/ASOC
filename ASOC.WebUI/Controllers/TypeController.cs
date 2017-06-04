@@ -21,28 +21,33 @@ namespace ASOC.WebUI.Controllers
         // GET: Index                  
         public ActionResult Index(int? page, string currentFilter, string searchString)
         {
-            if (searchString != null)
+            if (ModelState.IsValid)
             {
-                page = 1;
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+                var types = typeRepository.GetAllList();
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    types = types.Where(s => s.NAME.Contains(searchString)).OrderBy(s => s.NAME);
+                }
+
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+
+                return View(types.ToPagedList(pageNumber, pageSize));
             }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            var types = typeRepository.GetAllList();
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                types = types.Where(s => s.NAME.Contains(searchString)).OrderBy(s => s.NAME);
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-
-            return View(types.ToPagedList(pageNumber, pageSize));
+            Entities db = new Entities();
+            return View(db.TYPE.ToList());
         }     
 
         // GET: Delete

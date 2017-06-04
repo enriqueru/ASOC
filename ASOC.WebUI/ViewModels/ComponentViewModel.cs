@@ -10,6 +10,8 @@ namespace ASOC.WebUI.ViewModels
 {
     public class ComponentViewModel: COMPONENT
     {
+        public SelectList listStatus { get; set; }
+
         public decimal currentCoast { get; set; }
         public decimal oldCoast { get; set; }
         public string currentStatus { get; set; }
@@ -18,5 +20,7 @@ namespace ASOC.WebUI.ViewModels
         public SelectList typeList { get; set; }
         public SelectList statusList { get; set; }
         public IPagedList<ComponentViewModel> componentList { get; set; }
+        public SelectList listType { get; set; }
+        public SelectList listModel { get; set; }
     }
 }

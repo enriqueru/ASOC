@@ -4,6 +4,7 @@ using ASOC.WebUI.ViewModels;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,6 +24,47 @@ namespace ASOC.WebUI.Controllers
             getList = getListParam;
             statusRepository = statusRepositoryParam;
         }
+
+
+
+
+        public ActionResult Details(int? id)
+        {
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            Entities db = new Entities();
+            //COMPONENT comp = componentRepository.GetAllList().First(x => x.ID.Equals(id));
+            COMPONENT comp = db.COMPONENT.Find(Convert.ToDecimal(id));
+
+
+            var n = new ComponentViewModel()
+            {
+                ID_MODEL = comp.ID_MODEL,
+                ID_TYPE = comp.ID_TYPE,
+                ID_SERIES = comp.ID_SERIES,
+                DATE_ADD = comp.DATE_ADD,
+                PARTNUMBER = comp.PARTNUMBER,
+                CURRENT_STATUS = comp.CURRENT_STATUS,
+                MODEL = comp.MODEL,
+                TYPE = comp.TYPE,
+                currentStatus = comp.CURRENT_STATUS.Where(x => x.ID_COMPLECT.Equals(Convert.ToDecimal(id)))
+                        .OrderByDescending(x => x.DATE_STATUS).FirstOrDefault().STATUS.NAME,
+                currentCoast = comp.MODEL.PRICE.Where(x => x.ID_MODEL.Equals(Convert.ToDecimal(comp.ID_MODEL)))
+                        .OrderByDescending(x => x.DATE_ADD).FirstOrDefault().COAST
+
+            };
+
+            return View(n);
+
+
+        }
+
+
 
         // GET: Index                  
         public ActionResult Index(int? page, ComponentViewModel modelData)
@@ -82,8 +124,7 @@ namespace ASOC.WebUI.Controllers
                         .OrderByDescending(x => x.DATE_STATUS).FirstOrDefault().STATUS.NAME,
                     MODEL = item.MODEL,
                     TYPE = item.TYPE,
-                    currentCoast = item.MODEL.PRICE.Where(x => x.ID_MODEL.Equals(item.ID))
-                        .OrderByDescending(x => x.DATE_ADD).FirstOrDefault().COAST
+                    
                 });
             }
 
@@ -144,7 +185,7 @@ namespace ASOC.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 CURRENT_STATUS status = new CURRENT_STATUS()
-                {                  
+                {
                     ID_COMPLECT = modelData.ID_COMPLECT,
                     ID_STATUS = modelData.ID_STATUS,
                     DATE_STATUS = DateTime.Now
@@ -152,10 +193,17 @@ namespace ASOC.WebUI.Controllers
 
                 statusRepository.Create(status);
                 statusRepository.Save();
+
                 return RedirectToAction("Index");
             }
             else
-                return HttpNotFound();
+            { return HttpNotFound(); }
+
+
+
+
+
+
         }
 
         // GET: Delete
@@ -176,16 +224,7 @@ namespace ASOC.WebUI.Controllers
             return View(component);
         }
 
-        // GET: Details 
-        public ActionResult Details(decimal? id)
-        {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            var component = componentRepository.GetAllList().Where(x => x.ID.Equals(id));
-            return View(component);
-        }
+   
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -200,16 +239,22 @@ namespace ASOC.WebUI.Controllers
         public ActionResult Edit(int? id)
         {
 
-            if (id == null)
+            Entities db = new Entities();
+            COMPONENT comp = db.COMPONENT.Find(id);
+
+            var n = new ComponentViewModel()
             {
-                return HttpNotFound();
-            }
-            COMPONENT component = componentRepository.GetAllList().FirstOrDefault(x => x.ID.Equals(id));
-            if (component == null)
-            {
-                return HttpNotFound();
-            }
-            return View(component);
+                listType = new SelectList(db.TYPE, "ID", "NAME"),
+                listModel = new SelectList(db.MODEL, "ID", "NAME"),
+                listStatus = new SelectList(db.STATUS, "ID", "NAME"),
+                ID_MODEL = comp.ID_MODEL,
+                ID_TYPE = comp.ID_TYPE,
+                ID_SERIES = comp.ID_SERIES,
+                DATE_ADD = comp.DATE_ADD,
+                PARTNUMBER = comp.PARTNUMBER,
+            };
+            return View(n);
+
 
         }
 
@@ -227,22 +272,48 @@ namespace ASOC.WebUI.Controllers
             return View(component);
         }
 
-        // Get: Create
-        public ActionResult Create()
+      public ActionResult Create()
         {
-            return View();
+            Entities db = new Entities();
+            var n = new ComponentViewModel();
+            n.listType = new SelectList(db.TYPE, "ID", "NAME");
+            n.listModel = new SelectList(db.MODEL, "ID", "NAME");
+            n.listStatus = new SelectList(db.STATUS, "ID", "NAME");
+            return View(n);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(COMPONENT component)
+        public ActionResult Create(ComponentViewModel l)
         {
-            if (ModelState.IsValid)
+            Entities db = new Entities();
+
+            //componentRepository.Create(l);
+
+            db.Entry(new CURRENT_STATUS()
             {
-                componentRepository.Create(component);
-                componentRepository.Save();
-                return RedirectToAction("Index");
-            }
-            return View(component);
+                ID = l.ID,
+                ID_COMPLECT = l.ID,
+                ID_STATUS = Convert.ToDecimal(l.listStatus),
+                DATE_STATUS = DateTime.Now
+            }).State = EntityState.Added;
+
+            db.Entry(
+                new COMPONENT()
+                {
+                    ID = l.ID,
+                    ID_MODEL = l.ID_MODEL,
+                    ID_SERIES = l.ID_SERIES,
+                    ID_TYPE = l.ID_TYPE,
+                    PARTNUMBER = l.PARTNUMBER,
+                    DATE_ADD = l.DATE_ADD
+                }
+                ).State = EntityState.Added;
+
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
+
     }
 }

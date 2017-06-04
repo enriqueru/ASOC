@@ -25,14 +25,23 @@
         <th>
             Тип
         </th>
+        <th>
+            Кол-во
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+
             <td>
                 @Html.DisplayFor(modelItem => item.NAME)
             </td>
+
+              <td>
+          <span class="label label-pill label-info">@item.COMPONENT.Count()</span>
+            </td>
+
             <td>
                 @Html.ActionLink("Изменить", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.ID })

@@ -1,0 +1,131 @@
+﻿@model ASOC.WebUI.ViewModels.ComponentViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Подробнее</h2>
+
+<div>
+    
+    <hr />
+   
+   <ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Информация о КМ</a></li>
+  <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Изменения статусов КМ</a></li>
+  <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Цены</a></li>
+</ul>
+<div class="tab-content">
+ <div role="tabpanel" class="tab-pane active" id="tab1">
+ 
+   <table class="table table-responsive table-bordered">
+        <tr class="header">
+            <td><p>Имя</p></td>
+            <td><p>Информация</p></td>
+            
+        </tr>
+            <tr>
+                <td><p>Серийный номер</p></td>      
+                 <td><p> @Html.DisplayFor(model => model.ID_SERIES)</p></td>      
+            </tr>
+
+                    <tr>
+                <td><p>Статус</p></td>      
+                 <td><p>@Html.DisplayFor(model => model.currentStatus)</p></td>      
+            </tr>
+               <tr>
+                <td><p>Цена</p></td>      
+                 <td><p>@Html.DisplayFor(model => model.currentCoast)</p></td>      
+            </tr>
+               <tr>
+                <td><p>Дата</p></td>      
+                 <td><p> @Html.DisplayFor(model => model.DATE_ADD)</p></td>      
+            </tr>
+                <tr>
+                <td><p>Партнамбер</p></td>      
+                 <td><p> @Html.DisplayFor(model => model.PARTNUMBER)</p></td>      
+            </tr>
+
+               <tr>
+                <td><p>Модель</p></td>      
+                 <td><p><span class="label label-success">@Model.MODEL.NAME</span></p></td>      
+            </tr>
+
+                   <tr>
+                <td><p>Тип</p></td>      
+                 <td><p><span class="label label-success">@Model.TYPE.NAME</span></p></td>      
+            </tr>
+
+    </table>
+
+
+
+
+
+
+ </div>
+ <div role="tabpanel" class="tab-pane" id="tab2">
+ 
+
+   <table class="table table-responsive table-bordered">
+        <tr class="header">
+     
+            <td><p>Статус</p></td>
+            <td><p>Дата</p></td>
+            </tr>
+     
+@foreach(var item in Model.CURRENT_STATUS)
+     {
+       <tr>
+     
+          <td>
+              
+                    @if (item.STATUS.NAME == "В работе")
+                {
+             <span class="label label-success">  
+                 @Html.DisplayFor(modelItem => item.STATUS.NAME)
+                </span> 
+              }
+              @if(item.STATUS.NAME == "На складе")
+              {
+  
+              <span class="label label-pill label-warning">  @Html.DisplayFor(modelItem => item.STATUS.NAME) </span>
+              
+              }
+                
+                @if(item.STATUS.NAME == "В ремонте")
+                {
+                 <span class="label label-danger">  
+                      @Html.DisplayFor(modelItem => item.STATUS.NAME)
+                </span>
+                } 
+            @if(item.STATUS.NAME != "В ремонте" && item.STATUS.NAME != "В работе" && item.STATUS.NAME != "На складе")
+              {
+              <span class="label label-pill label-info"> @Html.DisplayFor(modelItem => item.STATUS.NAME)</span>
+              
+              }
+
+          </td>
+         <td>@item.DATE_STATUS</td>
+           </tr>
+     }
+
+       </table>
+
+
+ </div>
+ <div role="tabpanel" class="tab-pane" id="tab3">
+  Занятие ардритов с планеты Энтеропия.
+ </div>
+</div>
+
+ 
+
+</div>
+
+
+
+
+<p>
+    @Html.ActionLink("Назад", "Index")
+</p>

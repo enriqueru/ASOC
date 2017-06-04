@@ -34,6 +34,9 @@
         <th>
             Текущая цена
         </th>  
+        <th>
+            Кол-во
+        </th>
     </tr>
 
     @foreach (var item in Model.modelList)
@@ -47,7 +50,10 @@
             </td>
             <td>               
                 @Html.ActionLink(item.currentCoast.ToString(),"PriceChange", new { id = item.ID })              
-            </td>            
+            </td>  
+            <td>
+                  <span class="label label-pill label-info">@item.COMPONENT.Count()</span>
+            </td>          
             <td>
                 @Html.ActionLink("Изменить", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.ID })

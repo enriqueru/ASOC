@@ -1,0 +1,43 @@
+﻿@model ASOC.Domain.CURRENT_STATUS
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Серийный номер
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.COMPONENT.ID_SERIES)
+        </dd>
+        <dt>
+            Статус
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.STATUS.NAME)
+        </dd>
+        <dt>
+            Дата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DATE_STATUS)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

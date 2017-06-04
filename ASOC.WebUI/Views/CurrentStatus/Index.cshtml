@@ -1,0 +1,61 @@
+﻿@using PagedList.Mvc
+@model ASOC.WebUI.ViewModels.CurrentStatusViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Таблица изменения статусов КМ</h2>
+
+@using (Html.BeginForm("Index", "CurrentStatus", FormMethod.Get))
+{
+    <div class="row" id="find">
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.firstDate, new { @id = "Date", @type = "date", @class = "form-control" })
+        </div>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(m => m.secondDate, new { @id = "Date", @type = "date", @class = "form-control" })
+        </div>
+        <div class="col-sm-3 input-group">
+            @Html.EditorFor(model => model.searchString, Model.currentFilter, new { htmlAttributes = new { @class = "form-control" } })
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">Найти</button>
+            </span>
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Серийный номер
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            Дата
+        </th>
+    </tr>
+
+    @foreach (var item in Model.CurList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPONENT.ID_SERIES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STATUS.NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATE_STATUS)
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager(Model.CurList, page => Url.Action("Index",
+    new { page, currentFilter = Model.currentFilter }))

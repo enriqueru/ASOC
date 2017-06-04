@@ -17,13 +17,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ASOC", "Index", "COMPONENT", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Главная", "Index", "COMPONENT")</li>
+                    <li>@Html.ActionLink("КМ", "Index", "COMPONENT")</li>
+                    
+                     <li class="dropdown">
+          <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+           Логи
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Цены", "Index", "Price")</li>
+            <li>@Html.ActionLink("Статусы", "Index", "CurrentStatus")</li>
+          </ul>
+        </li>
+
+
+
+          <li class="dropdown">
+          <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+           Добавить
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Модель", "Index", "Model")</li>
+            <li>@Html.ActionLink("Статусы", "Index", "Status")</li>
+                <li>@Html.ActionLink("Типы", "Index", "Type")</li>
+          </ul>
+        </li>
+
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

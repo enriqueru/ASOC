@@ -29,65 +29,79 @@ namespace ASOC.WebUI.Controllers
         // GET: Role
         public ActionResult Index(int? page, ModelViewModel modelData)
         {
-            if (modelData.searchString != null)
+            if (ModelState.IsValid)
             {
-                page = 1;
-            }
-            else
-            {
-                modelData.ID_TYPE = modelData.ID_TYPE;               
-            }
-
-            modelData.currentFilter = modelData.searchString;
-
-            var models = modelRepository.GetAllList();
-            decimal searchDigit;
-            bool isInt = Decimal.TryParse(modelData.searchString, out searchDigit);
-
-            if (!String.IsNullOrEmpty(modelData.searchString))
-            {              
-                if (!isInt)
+                if (modelData.searchString != null)
                 {
-                    models = models.Where(s => s.NAME.Contains(modelData.searchString)).OrderBy(s => s.NAME);
-                }                  
-            }
-
-            if(modelData.ID_TYPE!=0)
-            {
-                var type = typeRepository.GetAllList().First(m => m.ID.Equals(modelData.ID_TYPE)); 
-                models = models.Where(s => s.TYPE.NAME.Contains(type.NAME)).OrderBy(s => s.NAME);
-            }            
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-
-            List<ModelViewModel> modelList = new List<ModelViewModel>();
-
-            foreach (MODEL item in models)
-            {                     
-                modelList.Add(new ModelViewModel() { COMPONENT = item.COMPONENT,
-                    ID = item.ID, ID_TYPE = item.ID_TYPE, NAME = item.NAME, PRICE = item.PRICE,
-                    TYPE = item.TYPE, currentCoast = item.PRICE.Where(x => x.ID_MODEL.Equals(item.ID))
-                        .OrderByDescending(x => x.DATE_ADD).FirstOrDefault().COAST });
-            }
-
-            if (!String.IsNullOrEmpty(modelData.searchString))
-            {
-                if (isInt)
-                {
-                    modelList = modelList.FindAll(m => m.currentCoast.Equals(searchDigit));
+                    page = 1;
                 }
+                else
+                {
+                    modelData.ID_TYPE = modelData.ID_TYPE;
+                }
+
+                modelData.currentFilter = modelData.searchString;
+
+                var models = modelRepository.GetAllList();
+                decimal searchDigit;
+                bool isInt = Decimal.TryParse(modelData.searchString, out searchDigit);
+
+                if (!String.IsNullOrEmpty(modelData.searchString))
+                {
+                    if (!isInt)
+                    {
+                        models = models.Where(s => s.NAME.Contains(modelData.searchString)).OrderBy(s => s.NAME);
+                    }
+                }
+
+                if (modelData.ID_TYPE != 0)
+                {
+                    var type = typeRepository.GetAllList().First(m => m.ID.Equals(modelData.ID_TYPE));
+                    models = models.Where(s => s.TYPE.NAME.Contains(type.NAME)).OrderBy(s => s.NAME);
+                }
+
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+
+                List<ModelViewModel> modelList = new List<ModelViewModel>();
+
+                foreach (MODEL item in models)
+                {
+                    modelList.Add(new ModelViewModel()
+                    {
+                        COMPONENT = item.COMPONENT,
+                        ID = item.ID,
+                        ID_TYPE = item.ID_TYPE,
+                        NAME = item.NAME,
+                        PRICE = item.PRICE,
+                        TYPE = item.TYPE,
+                        currentCoast = item.PRICE.Where(x => x.ID_MODEL.Equals(item.ID))
+                            .OrderByDescending(x => x.DATE_ADD).FirstOrDefault().COAST
+                    });
+                }
+
+                if (!String.IsNullOrEmpty(modelData.searchString))
+                {
+                    if (isInt)
+                    {
+                        modelList = modelList.FindAll(m => m.currentCoast.Equals(searchDigit));
+                    }
+                }
+
+                ModelViewModel model = new ModelViewModel
+                {
+                    modelList = modelList.ToPagedList(pageNumber, pageSize),
+                    typeList = getList.getTypeSelectList(),
+                    searchString = modelData.searchString,
+                    currentFilter = modelData.currentFilter,
+                    ID_TYPE = modelData.ID_TYPE
+                };
+                return View(model);
             }
 
-            ModelViewModel model = new ModelViewModel
-            {
-                modelList = modelList.ToPagedList(pageNumber, pageSize),
-                typeList = getList.getTypeSelectList(),
-                searchString = modelData.searchString,
-                currentFilter = modelData.currentFilter,
-                ID_TYPE = modelData.ID_TYPE
-            };           
-            return View(model);
+            Entities db = new Entities();
+
+            return View(db.MODEL.ToList());
         }
 
         [HttpGet]
