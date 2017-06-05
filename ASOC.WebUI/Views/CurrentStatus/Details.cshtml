@@ -1,0 +1,88 @@
+﻿@model ASOC.Domain.CURRENT_STATUS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<h2>Подробнее о измененном статусе</h2>
+
+<div>
+    
+    <hr />
+   
+   <ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Информация о статусе</a></li>
+  <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Расходы</a></li>
+ 
+</ul>
+<div class="tab-content">
+ <div role="tabpanel" class="tab-pane active" id="tab1">
+ 
+   <table class="table table-responsive table-bordered">
+        <tr class="header">
+            <td><p>Имя</p></td>
+            <td><p>Информация</p></td>
+            
+        </tr>
+            <tr>
+                <td><p>Причина смены статуса</p></td>      
+                 <td><p> @Html.DisplayFor(model => model.REASON)</p></td>      
+            </tr>
+
+                    <tr>
+                <td><p>Серийный номер</p></td>      
+                 <td><p>@Html.DisplayFor(model => model.COMPONENT.ID_SERIES)</p></td>      
+            </tr>
+               <tr>
+                <td><p>Статус</p></td>      
+                 <td><p>@Html.DisplayFor(model => model.STATUS.NAME)</p></td>      
+            </tr>
+               <tr>
+                <td><p>Дата</p></td>      
+                 <td><p> @Html.DisplayFor(model => model.DATE_STATUS)</p></td>      
+            </tr>
+       
+
+    </table>
+
+
+
+
+
+
+ </div>
+ <div role="tabpanel" class="tab-pane" id="tab2">
+ 
+
+   <table class="table table-responsive table-bordered">
+        <tr class="header">
+     
+            <td><p>Расходы по КМ</p></td>
+            </tr>
+     
+  @foreach(var item in Model.STATUS_COSTS)
+    {
+      
+       <tr>
+     
+          <td> 
+  @item.COSTS
+          </td>
+           </tr>
+     }
+
+       </table>
+
+
+ </div>
+</div>
+
+ 
+
+</div>
+
+<p>
+    @Html.ActionLink("Назад", "Index")
+</p>

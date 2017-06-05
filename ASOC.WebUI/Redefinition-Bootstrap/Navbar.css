@@ -1,0 +1,19 @@
+﻿.navbar-user {
+    border: 0px;
+    margin: 10px 0px 10px 0px;
+}
+.navbar-brand-user {
+    height: auto;
+}
+
+.navbar-default-user {
+    background-color: #5e5e5e;
+    border-radius: 0px;
+    border: 0px;
+}
+.navbar-default-user .navbar-nav > li > a {
+    color: #ffffff;
+}
+.dropdown-menu {
+    border-radius: 0px;
+}

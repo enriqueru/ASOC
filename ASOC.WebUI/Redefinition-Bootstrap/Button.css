@@ -1,0 +1,29 @@
+﻿.btn-default,
+.btn-danger,
+.btn-success,
+.btn-primary {
+    color: #fff;
+    -webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+    border-radius: 0px;
+    border: 0px;
+    font-size: 12px;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease;
+    width: 150px;
+}
+
+.btn-default {
+    background-color: #5e5e5e;
+}
+.btn-primary {
+    background-color: #337AB7;
+}
+.btn-danger {
+    background-color: #d9534f;
+}
+.btn-success {
+    background-color: #5cb85c;
+}

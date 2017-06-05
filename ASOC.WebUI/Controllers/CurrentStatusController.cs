@@ -93,6 +93,18 @@ namespace ASOC.WebUI.Controllers
             currentStatusRepository.Save();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Details(int id)
+        {
+            Entities db = new Entities();
+            CURRENT_STATUS model = db.CURRENT_STATUS.Find(id);
+            if (model == null)
+                return HttpNotFound();
+            return View(model);
+        }
+
+
+
     }
 
 }

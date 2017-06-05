@@ -1,0 +1,42 @@
+﻿@media (min-width: 992px) {
+    .modal-lg {
+        width: 970px;
+    }
+}
+
+.modal-content {
+    -webkit-box-shadow: 0px 0px 0px;
+       -moz-box-shadow: 0px 0px 0px;
+    box-shadow: 0px 0px 0px;
+    -webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.modal-content .modal-header {
+    padding: 3px 15px;
+    background-color: #5e5e5e;
+    color: #fff;
+    border-bottom: none;
+    display: table;
+    width: 100%;
+    font-family: OpenSansExtraBold;
+}
+.modal-content .modal-info {
+    padding: 10px 15px;
+    background-color: #337ab7;
+    font-family: RobotoCondensedLight;
+    color: white;
+}
+
+.modal-header h4{
+    display: table-cell;
+    padding: 10px 0px;
+}
+
+.modal-header .close{
+    display: table-cell;
+    color: #fff;
+    outline: none;
+    opacity: 1;
+}

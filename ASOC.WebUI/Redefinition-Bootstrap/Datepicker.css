@@ -1,0 +1,111 @@
+﻿.datepicker {
+    padding: 0px;
+}
+
+    .datepicker .datepicker-days,
+    .datepicker .datepicker-months,
+    .datepicker .datepicker-years,
+    .datepicker .datepicker-decades,
+    .datepicker .datepicker-centuries {
+        padding: 5px;
+    }
+
+        .datepicker .datepicker-months table tbody tr td,
+        .datepicker .datepicker-years table tbody tr td,
+        .datepicker .datepicker-decades table tbody tr td,
+        .datepicker .datepicker-centuries table tbody tr td {
+            padding: 0px;
+        }
+
+    .datepicker table {
+    }
+
+        .datepicker table thead {
+        }
+
+            .datepicker table thead tr th {
+                text-align: center;
+            }
+            .datepicker table thead tr th.dow {
+                font-size: 10px;
+            }
+
+            .datepicker table thead tr:nth-child(2) {
+                background-color: #ccc;
+            }
+
+    .datepicker .datepicker-days table tbody tr td.old,
+    .datepicker .datepicker-days table tbody tr td.new {
+        background-color: #eee;
+    }
+
+    .datepicker .datepicker-days table tbody tr td.day {
+    }
+
+    .datepicker .datepicker-days table tbody tr td.today {
+        background-color: #ffdb99 !important;
+    }
+
+    .datepicker .datepicker-days table tbody tr td.cw {
+        background-color: transparent;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .datepicker .datepicker-days table tbody tr td.range {
+        background-color: #8bc9ff;
+        color: #fff;
+    }
+
+    .datepicker .datepicker-days table tbody tr td {
+        border: 1px solid #fff;
+        background-color: #ccc;
+        text-align: center;
+        -webkit-transition: background-color .2s ease;
+        -o-transition: background-color .2s ease;
+        -moz-transition: background-color .2s ease;
+        transition: background-color .2s ease;
+    }
+
+        .datepicker .datepicker-days table tbody tr td.day:hover,
+        .datepicker table thead tr th.next:hover,
+        .datepicker table thead tr th.prev:hover,
+        .datepicker table thead tr th.datepicker-switch:hover,
+        .datepicker .datepicker-months table tbody tr td span:hover,
+        .datepicker .datepicker-years table tbody tr td span:hover,
+        .datepicker .datepicker-decades table tbody tr td span:hover,
+        .datepicker .datepicker-centuries table tbody tr td span:hover,
+        .datepicker table tfoot .today:hover {
+            color: #fff;
+            background: #8bc9ff;
+            cursor: pointer;
+        }
+
+        .datepicker .datepicker-days table tbody tr td.active,
+        .datepicker .datepicker-days table tbody tr td.selected,
+        .datepicker .datepicker-months table tbody tr td span.focused,
+        .datepicker .datepicker-years table tbody tr td span.focused,
+        .datepicker .datepicker-centuries table tbody tr td span.focused {
+            color: #fff;
+            background: #337ab7;
+        }
+
+    .datepicker .datepicker-months table tbody tr td span,
+    .datepicker .datepicker-years table tbody tr td span,
+    .datepicker .datepicker-decades table tbody tr td span,
+    .datepicker .datepicker-centuries table tbody tr td span {
+        background-color: #ccc;
+        padding: 3px 6px;
+        font-size: 12px;
+        text-align: center;
+        margin-right: 1px;
+    }
+
+        .datepicker .datepicker-months table tbody tr td span:last-child,
+        .datepicker .datepicker-years table tbody tr td span:last-child {
+            margin-right: 0px !important;
+        }
+
+    .datepicker table tfoot .today {
+        text-align: center;
+        background-color: #ccc;
+    }

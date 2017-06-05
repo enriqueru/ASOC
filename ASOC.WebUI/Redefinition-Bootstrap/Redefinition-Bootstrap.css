@@ -1,0 +1,52 @@
+﻿@import "Button.css";
+@import "Navbar.css";
+@import "Form-controll.css";
+@import "List-group-custom-gray.css";
+@import "Modal-Window.css";
+@import "Footer.css";
+@import "Pagination.css";
+@import "Login.css";
+@import "Datepicker.css";
+@import "Redefinition-jQuery-UI.css";
+
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-custom {
+    padding-right: 0px;
+}
+
+.list-group-item.active{
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+}
+.navbar-right {
+    margin-right: 0px;
+}
+
+.navbar-user {
+    margin: 0px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    font-family: RobotoCondensedLight;
+}
+
+body {
+    font-family: OpenSansRegular;
+}
+
+.form-control {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.authorizInfo {
+    padding: 15px;
+    background-color: rgb(220, 227, 255);
+    border-radius: 3px;
+    border: 1px solid rgb(152, 161, 199);
+}

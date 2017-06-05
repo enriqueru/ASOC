@@ -1,0 +1,44 @@
+﻿hgroup.title {
+    color: #5e5e5e;
+    font-family: OpenSansExtraBold;
+}
+
+hgroup.title h1{
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+
+.control-label {
+    color: #5e5e5e;
+    font-family: RobotoCondensedLight;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+/*
+ * Text in logotip
+ */
+.navbar_brand_text_logo {
+    color: #5e5e5e;
+    padding: 15px 0px;
+    float: left;
+}
+
+.navbar_brand_text_logo .description {
+    font-family: RobotoCondensedLight;
+    font-size: 16px;
+}
+
+.navbar_brand_text_logo .system_name {
+    font-family: OpenSansExtraBold;
+    font-size: 18px;
+}
+/*
+ * END_ Text in logotip
+ */
+
+.not_authorized {
+    color: #ffffff;
+    padding: 15px;
+    line-height: 20px;
+}

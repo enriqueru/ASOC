@@ -163,19 +163,28 @@ namespace ASOC.WebUI.Controllers
                 return HttpNotFound();
             }
 
+          
             decimal status = component.CURRENT_STATUS.Where(x => x.ID_COMPLECT.Equals(component.ID))
                 .OrderByDescending(x => x.DATE_STATUS).FirstOrDefault().ID_STATUS;
             string statusName = component.CURRENT_STATUS.Where(x => x.ID_COMPLECT.Equals(component.ID))
                 .OrderByDescending(x => x.DATE_STATUS).FirstOrDefault().STATUS.NAME;
+
+            Entities db = new Entities();
+            //var reason = db.STATUS_REASON.Where(x => x.ID_CURRENT).FirstOrDefault().REASON;
+
 
             CurrentStatusViewModel modelData = new CurrentStatusViewModel()
             {
                 ID = component.ID,
                 ID_COMPLECT = component.ID,
                 ID_STATUS = status,
-                statusList = getList.getStatusSelectList()                                       
+                statusList = getList.getStatusSelectList(),
+                //reasonCur = Convert.ToString(reason)
             };
+            
 
+
+           
             return View(modelData);
         }
 
@@ -191,8 +200,9 @@ namespace ASOC.WebUI.Controllers
                     DATE_STATUS = DateTime.Now
                 };
 
+                modelData.GetCosts(ref status);
                 statusRepository.Create(status);
-                statusRepository.Save();
+                statusRepository.Save(); 
 
                 return RedirectToAction("Index");
             }

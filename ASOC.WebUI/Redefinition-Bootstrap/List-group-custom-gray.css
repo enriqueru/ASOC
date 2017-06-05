@@ -1,0 +1,150 @@
+﻿.list-group-custom-gray {
+    border: 1px solid #5e5e5e;
+}
+
+.list-group-custom-gray > .list-group-item:first-child{
+    -webkit-border-radius: 0px 0px 0px 0px;
+       -moz-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    background-color: #5e5e5e;
+    border-color: #5e5e5e;
+    padding: 0px 15px;
+}
+
+
+
+.list-group-custom-gray .list-group-item {
+    padding: 3px 15px;
+    border: 0px;
+    margin: 0px;
+}
+
+.list-group-custom-gray .list-group-item.active .list-group-item-button {
+    display: table;
+    padding: 0px;
+    width: 100%;
+    border: 0px solid #ddd;
+    -webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: 0px 0px 0px;
+       -moz-box-shadow: 0px 0px 0px;
+    box-shadow: 0px 0px 0px;
+}
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-button-name {
+    width: 100% !important;
+    padding: 10px 0px;
+}
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-custom{
+    display: table-cell;
+    color: #fff;
+    width: 20px;
+    position: relative;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-custom a {
+    color: #fff;
+    outline-offset: 0px;
+    text-decoration: none;
+    outline: none;
+}
+
+.list-group-custom-gray .list-group-item .list-group-item-button .list-group-item-button-name {
+    display: table-cell;
+}
+.list-group-custom-gray .list-group-item .list-group-item-button .list-group-item-button-image{
+    color: #5e5e5e;
+}
+
+
+
+
+
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-button-search-box {
+    display: table-cell;
+    color: #fff;
+    position: relative;
+    vertical-align: middle;
+}
+.list-group-item-button-search-box .search-table:hover,
+.list-group-item-button-search-box .search-table-input:hover {
+    background-color: #FFF !important;
+}
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-button-search-box .search-table {
+    display: table;
+    background-color: #b6b6b6;
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding: 0px 15px;
+}
+.search-table .search-cell,
+.search-table .search-cell-input,
+.search-table .search-cell-separator{
+    display: table-cell;
+    vertical-align: middle;
+}
+.search-table .search-cell-separator {
+    padding: 3px 10px;
+    color: #555;
+    font-size: 12px;
+    background-color: #b6b6b6; 
+}
+
+
+.list-group-item-button-search-box .search-table .search-cell-input input[type="text"],
+.list-group-item-button-search-box .search-table-input .search-cell-input input[type="text"]{
+    border: none;
+    padding: 5px 10px;
+    background-color: #b6b6b6;
+    height: 100%;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+    box-shadow: none;
+    width: 180px;
+    font-size: 12px;
+}
+.list-group-custom-gray .list-group-item.active .list-group-item-button .list-group-item-button-search-box .search-table .search-cell.search-cell-button {
+    padding-left: 10px;
+}
+
+.list-group-item-button-search-box .search-table:hover .search-cell-input,
+.list-group-item-button-search-box .search-table-input:hover .search-cell-input{
+    background-color: #FFF;
+}
+.list-group-item-button-search-box .search-table:hover .search-cell-input input[type="text"],
+.list-group-item-button-search-box .search-table-input:hover .search-cell-input input[type="text"] {
+    background-color: #FFF;
+}
+
+
+
+.list-group-item-button-search-box .search-table-input:hover input[type="submit"]{
+    background-color: #337ab7;
+    color: #fff;
+}
+.list-group-item-button-search-box .search-table-input {
+    padding: 0px 15px !important;
+    border: none !important;
+    display: table;
+    background-color: #b6b6b6;
+    -webkit-border-radius: 15px;
+       -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding: 0px 15px;
+}
+.list-group-item-button-search-box .search-table-input input[type="submit"]{
+    padding: 3px 10px;
+    background-color: #b6b6b6;
+    border: none;
+    -webkit-border-radius: 0px 10px 10px 0px;
+       -moz-border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 10px 10px 0px;
+    color: #9a9a9e;
+    outline: none;
+    font-size: 12px;
+}
+.list-group-item-button-search-box .search-table-input input[type="text"] {
+    width: 250px !important;
+}

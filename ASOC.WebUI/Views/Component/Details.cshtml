@@ -13,7 +13,7 @@
    <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Информация о КМ</a></li>
   <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Изменения статусов КМ</a></li>
-  <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Цены</a></li>
+ 
 </ul>
 <div class="tab-content">
  <div role="tabpanel" class="tab-pane active" id="tab1">
@@ -22,6 +22,7 @@
         <tr class="header">
             <td><p>Имя</p></td>
             <td><p>Информация</p></td>
+             <td><p>Подробнее</p></td>
             
         </tr>
             <tr>
@@ -55,6 +56,10 @@
                 <td><p>Тип</p></td>      
                  <td><p><span class="label label-success">@Model.TYPE.NAME</span></p></td>      
             </tr>
+
+              <td>
+                @Html.ActionLink("Подробнее", "Details", new { })
+               </td>
 
     </table>
 
@@ -113,9 +118,6 @@
        </table>
 
 
- </div>
- <div role="tabpanel" class="tab-pane" id="tab3">
-  Занятие ардритов с планеты Энтеропия.
  </div>
 </div>
 

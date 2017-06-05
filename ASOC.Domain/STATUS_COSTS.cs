@@ -12,18 +12,12 @@ namespace ASOC.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class STATUS
+    public partial class STATUS_COSTS
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public STATUS()
-        {
-            this.CURRENT_STATUS = new HashSet<CURRENT_STATUS>();
-        }
-    
         public decimal ID { get; set; }
-        public string NAME { get; set; }
+        public decimal ID_CURRENT { get; set; }
+        public string COSTS { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CURRENT_STATUS> CURRENT_STATUS { get; set; }
+        public virtual CURRENT_STATUS CURRENT_STATUS { get; set; }
     }
 }

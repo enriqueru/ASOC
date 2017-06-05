@@ -244,6 +244,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Redefinition-Bootstrap\Button.css" />
+    <Content Include="Redefinition-Bootstrap\Datepicker.css" />
+    <Content Include="Redefinition-Bootstrap\Footer.css" />
+    <Content Include="Redefinition-Bootstrap\Form-controll.css" />
+    <Content Include="Redefinition-Bootstrap\List-group-custom-gray.css" />
+    <Content Include="Redefinition-Bootstrap\Login.css" />
+    <Content Include="Redefinition-Bootstrap\Modal-Window.css" />
+    <Content Include="Redefinition-Bootstrap\Navbar.css" />
+    <Content Include="Redefinition-Bootstrap\Pagination.css" />
+    <Content Include="Redefinition-Bootstrap\Redefinition-Bootstrap.css" />
+    <Content Include="Redefinition-Bootstrap\Redefinition-jQuery-UI.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -315,6 +326,7 @@
     <Content Include="Views\Component\Details.cshtml" />
     <Content Include="Views\CurrentStatus\Index.cshtml" />
     <Content Include="Views\CurrentStatus\Delete.cshtml" />
+    <Content Include="Views\CurrentStatus\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

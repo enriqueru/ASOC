@@ -1,0 +1,57 @@
+﻿/*Прижимаем футер***************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+html, 
+body {
+    height: 100%;
+}
+body {
+    background-color: #ededed;
+}
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    background-color: #FFF;
+    -webkit-box-shadow: 0 .005em .01em 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12) !important;
+       -moz-box-shadow: 0 .005em .01em 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12) !important;
+            box-shadow: 0 .005em .01em 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12) !important;
+}
+.content {
+    padding-bottom: 80px;
+    padding-top: 15px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #5e5e5e;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: RobotoCondensedLight;
+}
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*END_Прижимаем футер***********************************************************************/
+
+.footer .footer-line:first-child {
+    margin: 10px 0px 10px 0px;
+}
+.footer .footer-line {
+    margin: 0px 0px 10px 0px;
+}
+.footer .footer-line a{
+    color: #ff6f6f;
+}
+.footer .footer-line a:hover{
+    text-decoration: blink;
+}
+.footer .footer-line a:link{
+    
+}
+.footer .footer-line a:visited{
+    
+}
+.footer .footer-line a:active{
+    
+}
